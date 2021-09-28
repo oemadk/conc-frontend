@@ -1,0 +1,99 @@
+<div style="margin-top:-100px;">
+  <div class="row" style="border-bottom-color: #d6d6d6;">
+    <div class="col" style="color: var(--bs-gray-900);border-bottom-color: #d6d6d6;">
+      <h5 class="text-center">Good morning...</h5>
+      <h4 class="text-center">ICU Transfers Request</h4>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col text-center" style="margin-top: 30px;">
+    <button class="btn btn-primary text-center" type="button"
+            (click)="gotoAdmission()"  style="background: #9ddcff;color: #017fe0;width: 250.5px;height: 70px;">Request an ICU Transfer
+    </button>
+  </div>
+</div>
+<div class="row" style="margin-top: 30px;">
+  <div class="col">
+    <h1 style="padding: 10px;font-size: 14px;background: #e5e5e5;margin-bottom: 2px;">ICU Accepted Transfers</h1>
+  </div>
+</div>
+<div class="row" style="margin-top: 0px;" *ngFor="let a of accepted | async">
+  <div class="col d-flex flex-row flex-grow-1 justify-content-between align-items-baseline" style="padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;border-bottom: 1px solid #e6e6e6 ;">
+    <h1 class="d-inline-block" style="font-size: 14px;background: rgba(229,229,229,0);">{{a.name}}</h1>
+    <button class="btn btn-outline-primary btn-sm text-center d-flex flex-row justify-content-end" type="button">
+      Accepted &gt;
+    </button>
+  </div>
+</div>
+
+
+
+
+<div class="row">
+  <div class="col">
+    <h1 style="padding: 10px;font-size: 14px;background: #e5e5e5;margin-bottom: 2px;">ICU Denied Transfers</h1>
+    <div class="row" style="margin-top: 0px;"  *ngFor="let d of declined | async">
+      <div class="col d-flex flex-row flex-grow-1 justify-content-between align-items-baseline"
+           style="padding:10px;margin-right:10px;margin-left:10px;border-bottom: 1px solid #e6e6e6 ;">
+        <h1 class="d-inline-block" style="font-size: 14px;background: rgba(229,229,229,0);">{{d.name}}</h1>
+        <button class="btn btn-outline-primary btn-sm text-center d-flex flex-row justify-content-end"
+                type="button" (click)="openModal(declinedModal, d)" >Denied<i class="fa fa-info-circle" style="margin-left: 3px;margin-top: 4px;"></i>&nbsp;
+        </button>
+      </div>
+    </div>
+    <ng-template #declinedModal>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Modal</h4>
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+          <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div style="padding:20px;">
+          <p style="background:#e5e5e5; padding-left: 10px;"><b>Reasons to Decline RFA</b></p>
+          <p style="border-bottom:1px solid #ededed; padding:10px;">
+            {{declinedData.reasons}}
+          </p>
+          <p style="border-bottom:1px solid #ededed; padding:10px;"></p>
+          <p style="border-bottom:1px solid #ededed; padding:10px;"></p>
+          <p style="border-bottom:1px solid #ededed; padding:10px;"></p>
+          <p style="border-bottom:1px solid #ededed; padding:10px;"></p>
+          <p style="border-bottom:1px solid #ededed; padding:10px;"></p>
+          <p style="border-bottom:1px solid #ededed; padding:10px;"></p>
+          <p style="border-bottom:1px solid #ededed; padding:10px;"></p>
+
+          <p style="border-bottom:1px solid #ededed; padding:10px;"></p>
+
+          <p style="border-bottom:1px solid #ededed; padding:10px;"></p>
+
+          <p style="padding:20px;display:inline-block;border:1px solid #cccccc;border-radius:10px;width:38%;"><b>@time&date</b>
+          </p>
+          <p style="padding:20px;display:inline-block;border:1px solid #cccccc;border-radius:10px;width:60%"><b>By:
+            ICU Specialist</b></p>
+        </div>
+      </div>
+    </ng-template>
+
+
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <h1 style="padding: 10px;font-size: 14px;background: #e5e5e5;margin-bottom: 2px;">Pending Transfers</h1>
+    <div class="row" style="margin-top: 0px;" *ngFor="let p of pending | async" >
+      <div class="col d-flex flex-row flex-grow-1 justify-content-between align-items-baseline" style="padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;border-bottom: 1px solid #e6e6e6 ;">
+        <h1 class="d-inline-block" style="font-size: 14px;background: rgba(229,229,229,0);">{{p.name}}</h1>
+        <button (click)="gotofilledform(p)" class="btn btn-outline-primary btn-sm text-center d-flex flex-row justify-content-end" type="button">
+          Pending&nbsp;
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<tabset [justified]="true">
+  <tab>
+    <ng-template tabHeading>
+      <img class="img-width-adj" src="assets/img/tab1.png"/>
+    </ng-template>
+    <app-messaginghome></app-messaginghome>
+  </tab>
+  <tab>
+    <ng-template tabHeading>
+      <img class="img-width-adj" src="assets/img/tab2.png"/>
+    </ng-template>
+    <app-patientlisting></app-patientlisting>
+  </tab>
+  <tab>
+    <ng-template tabHeading>
+      <fa-icon [icon]="fabed"></fa-icon>
+    </ng-template>
+    <app-icuhome></app-icuhome>
+  </tab>
+  <tab>
+    <ng-template tabHeading>
+      <img class="img-width-adj" id="s2" src="assets/img/tab4.png"/>
+    </ng-template>
+    <app-calculator></app-calculator>
+  </tab>
+
+</tabset>
