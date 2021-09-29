@@ -475,8 +475,9 @@ export class RfaComponent implements OnInit {
       error(err: any) {
       }
     });
+
     $.ajax({
-      url: 'http://23.96.36.35:3000/invite',
+      url: 'http://52.170.142.161:3000/invite',
       type: 'POST',
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({
