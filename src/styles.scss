@@ -789,3 +789,23 @@ body {
   fill: var(--colour-primary);
 }
 
+.nav-tabs{
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background:white;
+}
+.img-width-adj{
+  width:5vw;
+}
+.nav-tabs .nav-link.active {
+  color: #40adf6;
+  border-color: #dee2e6 #dee2e6 #fff;
+}
+.nav-tabs .nav-link{
+  color:  black;
+  background-color: #fff;
+  border-color: #dee2e6 #dee2e6 #fff;
+}

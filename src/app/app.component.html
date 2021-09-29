@@ -1,20 +1,2 @@
-<div id="app" *ngIf="isLoggedIn || nav != 'off'">
-  <a class="nav-link" (click)="logout()" style="position:absolute;    z-index: 9999;">LogOut</a>
+<router-outlet></router-outlet>
 
-  <nav class="navbar navbar-expand  " style="justify-content: flex-end;">
-    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-      <li class="nav-item">
-        <img class="rounded-circle img-fluid image-header" src="assets/img/header.png" width="70" height="70"
-             style="text-align: right;">
-        <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
-      </li>
-    </ul>
-  </nav>
-
-  <div>
-    <router-outlet></router-outlet>
-  </div>
-</div>
-<div *ngIf="!isLoggedIn">
-  <router-outlet></router-outlet>
-</div>

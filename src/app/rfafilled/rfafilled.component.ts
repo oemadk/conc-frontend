@@ -147,7 +147,19 @@ openModal(template: TemplateRef<any>) {
       }
     );
   }
-
+accept(): void{
+  this.rfaService.acceptRfa(
+    //@ts-ignore
+    this.formId
+  ).subscribe(
+      (data: any) => {
+      console.log(data);
+    },
+      (err: any) => {
+      console.log(err);
+    }
+  );
+}
   ngOnInit(): void {
     // @ts-ignore
     // @ts-ignore

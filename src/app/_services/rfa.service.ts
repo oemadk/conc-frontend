@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
-const AUTH_API = 'http://localhost:8080/api/rfa';
+const AUTH_API = 'http://23.96.36.35:8080/api/rfa';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -103,5 +103,8 @@ export class RfaService {
   }
   declineRfa(id: string, reasons: string): Observable<any> {
     return this.http.post(`${AUTH_API}/${id}/decline`, {id, reasons}, httpOptions);
+  }
+  acceptRfa(id: string): Observable<any> {
+    return this.http.post(`${AUTH_API}/${id}/accept`, {id}, httpOptions);
   }
 }

@@ -1,7 +1,10 @@
 .nav-tabs{
-  bottom: 1px;
-  position: absolute;
   width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background:white;
 }
 .img-width-adj{
   width:5vw;

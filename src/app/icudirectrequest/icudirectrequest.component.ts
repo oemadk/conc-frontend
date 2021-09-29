@@ -29,7 +29,7 @@ export class IcudirectrequestComponent implements OnInit {
     this.router.navigate(['/rfafilled', data._id ]);
   }
   gotoAdmission(): void{
-    this.router.navigate(['/rfa']);
+    this.router.navigate(['/icubeds']);
   }
   // tslint:disable-next-line:typedef
   openModal(template: TemplateRef<any>, data: any) {

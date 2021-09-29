@@ -105,17 +105,17 @@ export class RfaComponent implements OnInit {
     const name = $event.name;
     console.log(name);
     if (categori === 'clinical'){
-      this.form.clinical = 'http://localhost:8080/files/' + name;
+      this.form.clinical = 'http://23.96.36.35:8080/files/' + name;
     }else if (categori === 'lab'){
-      this.form.lab = 'http://localhost:8080/files/' + name;
+      this.form.lab = 'http://23.96.36.35:8080/files/' + name;
     }else if (categori === 'xray'){
-      this.form.xray = 'http://localhost:8080/files/' + name;
+      this.form.xray = 'http://23.96.36.35:8080/files/' + name;
     }else if (categori === 'catscan'){
-      this.form.cat = 'http://localhost:8080/files/' + name;
+      this.form.cat = 'http://23.96.36.35:8080/files/' + name;
     }else if (categori === 'mri'){
-      this.form.mri = 'http://localhost:8080/files/' + name;
+      this.form.mri = 'http://23.96.36.35:8080/files/' + name;
     }else if (categori === 'ultrasound'){
-      this.form.ultrasound = 'http://localhost:8080/files/' + name;
+      this.form.ultrasound = 'http://23.96.36.35:8080/files/' + name;
     }
   }
   onSubmit(): void {
@@ -287,7 +287,7 @@ export class RfaComponent implements OnInit {
     articleMain.appendChild(clipContainer);
     const blob = url;
     // const audioURL = window.URL.createObjectURL(blob);
-    audio.src = 'http://localhost:8080/files/' + blob;
+    audio.src = 'http://23.96.36.35:8080/files/' + blob;
     this.form.voice_notes = audio.src;
     console.log(audio.src, 'audio source thingy');
 
@@ -476,12 +476,12 @@ export class RfaComponent implements OnInit {
       }
     });
     $.ajax({
-      url: 'http://localhost:3000/invite',
+      url: 'http://23.96.36.35:3000/invite',
       type: 'POST',
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({
         roomId: room,
-        link: 'http://localhost:4200/rfafilled/'+ this.rfaidfromResponse
+        link: 'https://conc-frontend.vercel.app/rfafilled/'+ this.rfaidfromResponse
       }),
       dataType: 'json',
       success(data: any) {

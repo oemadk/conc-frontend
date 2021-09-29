@@ -18,7 +18,7 @@
           <div style="flex:1;padding: 5px;">
             <div class="textOnInput">
               <label for="inputText">Name</label>
-              <input class="form-control" placeholder="Full Name" type="text" name="name" [(ngModel)]="form.name"
+              <input onkeypress="return event.charCode != 32" class="form-control" placeholder="Full Name" type="text" name="name" [(ngModel)]="form.name"
                      required
                      #name="ngModel">
             </div>
