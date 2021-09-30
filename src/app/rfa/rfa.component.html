@@ -1,3 +1,5 @@
+<app-header></app-header>
+<div class="container">
 <form
   name="form"
   (ngSubmit)="f.form.valid && onSubmit()"
@@ -278,7 +280,7 @@
               style="display:flex;padding:20px; flex:1; flex-direction: row; align-content:center;margin-bottom:10px;">
               <div style="flex:1;padding: 5px;width:100%;">
                 <!--                              audio record-->
-                <article>
+                <article style="text-align: center">
                   <button class="record" (click)="startRecording()">Start Recording</button>
                   <button class="stop" (click)="stopRecording()">Stop Recording</button>
                   <!-- <section class="sound-clips"> -->
@@ -309,13 +311,14 @@
     margin: 0 auto;
     align-items: center;
     justify-content: center;
-}"><a href="icudirectrequest" style="text-decoration: none;color:black;"><b>Your Request Has Been <br> Submitted
+}"><a (click)="goto();modalRef?.hide()" style="text-decoration: none;color:black;"><b>Your Request Has Been <br> Submitted
           Successfully</b></a></h4>
       </div>
     </div>
   </ng-template>
 
 </form>
+</div>
 <!--<div style="text-align:center;margin-top: 200px;" >-->
 <!--  <button (click)="initiateRecording()" class="btn btn-primary" *ngIf="!recording" style="cursor: pointer;background-color: green;color: white;font-size: 40px;"> Start Recording </button>-->
 <!--  <button (click)="stopRecording()" class="btn btn-danger" *ngIf="recording" style="cursor: pointer;background-color: red;color: white;font-size: 40px;"> Stop Recording </button>-->

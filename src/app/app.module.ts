@@ -31,6 +31,7 @@ import { MessaginghomeComponent } from './messaginghome/messaginghome.component'
 import { ChatComponent } from './chat/chat.component';
 import { PatientlistingComponent } from './patientlisting/patientlisting.component';
 import * as $ from 'jquery';
+import { PopupComponent } from './popup/popup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +53,8 @@ import * as $ from 'jquery';
     IcubedsComponent,
     MessaginghomeComponent,
     ChatComponent,
-    PatientlistingComponent
+    PatientlistingComponent,
+    PopupComponent
   ],
   imports: [
     RouterModule,

@@ -191,7 +191,7 @@ export class MessaginghomeComponent implements OnInit {
     // @ts-ignore
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < roomList.length; ++i) {
-      console.log(roomList);
+      console.log(roomList, 'da ely betdawar 3aleeh');
       let row;
       if (roomList != null) {
         var main;
@@ -204,23 +204,36 @@ export class MessaginghomeComponent implements OnInit {
           main.indexOf("#") + 1,
           main.lastIndexOf(":")
         );
+        var temp;
+        if (  roomList[i].latest_message == undefined){
+              console.log('its undefined');
+          temp = 'No history';
+        }else if (roomList[i].latest_message == 'undefined'){
+          temp = 'No history';
+        }else {
+          temp = roomList[i].latest_message;
+        }
         row =
           '<div style="display:flex; flex:1;flex-direction: row; justify-content: center; z-index:9999" (click)="thisroom('+ roomList[i].room_id +  ')">\n' +
           '    <div style="display:flex; flex:0.15; flex-direction:column; justify-content: center">\n' +
-          '      <img class="rounded-circle img-fluid" src="assets/img/patient4.png" width="80" height="80" (click)="thisroom(' + roomList[i].room_id + ')">\n' +
+          '      <img class="rounded-circle img-fluid" src="assets/img/patient4.png" width="100" height="100" (click)="thisroom(' + roomList[i].room_id + ')">\n' +
           '    </div>\n' +
           '    <div style="display:flex; flex:0.85; flex-direction:column;    justify-content: center;\n' +
           '    background: #b4e1ff; padding:10px; border:1px solid #eaeaea; border-left:0;border-right:0;">\n' +
-          '      <div style="display:flex; flex:1; align-self: center; color:#cdcdcd">\n' +
+          '      <div class="forresponsive" style="display:flex; flex:1; align-self: center; color:#cdcdcd">\n' +
           '        <b>REQUEST</b>\n' +
           '      </div>\n' +
           '      <div style="display:flex; flex:1; margin-top:-20px; color:#000100"><b class="theroom">' + mySubString + '</b>\n' +
           '      </div>\n' +
-          '      <div style="color:#000100">\n' +
-          '        <p>Lorem ipsum dolot sit amey,Lorem ipsum dolot sit amey,Lorem ipsum dolot sit amey,Lorem ipsum dolot sit amey,Lorem ipsum dolot sit amey</p>\n' +
+          '      <div style="color: #000100;\n' +
+          '    width: 248px;\n' +
+          '    white-space: nowrap;\n' +
+          '    overflow: hidden;\n' +
+          '    text-overflow: ellipsis;color:#000100">\n' +
+          '        <p>'+ temp +'</p>\n' +
           '      </div>\n' +
-          '<div>'+
-          '<button class="theroomid" value="'+  roomList[i].room_id   + '">Join</button> </div>'+
+          '<div style="text-align:right;">'+
+          '<button  class="theroomid" value="'+  roomList[i].room_id   + '">Join</button> </div>'+
           '</div>\n' +
           '</div>'
 

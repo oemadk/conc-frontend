@@ -659,14 +659,21 @@ export class ChatComponent implements OnInit {
       $('#messages').append(row);
 
     }else if(data.sender == '@drbot:yashfiichat.eastus.cloudapp.azure.com')  {
+      let h = msg;
+    let theLink = h.substring(
+        h.lastIndexOf('http')
+      );
+
       const row = ' <li>\n' +
         '                        <div class="chat__bubble chat__bubble--me" style="margin: 0 auto;\n' +
         '    background: red;\n' +
         '    color: white;\n' +
         '    font-style: italic;\n' +
-        '    font-size: 17px;">'
-        + msg +
-        '                                            </div>\n' +
+        '    font-size: 17px;text-align:center;">'
+        + msg + '</br>'+
+
+        '<a target="_blank" href="' + theLink + '"/>LINK</a>' +
+       ' </div>\n' +
         '                                        </li>';
       $('#messages').
       append(row);

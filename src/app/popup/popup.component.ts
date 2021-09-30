@@ -12,18 +12,22 @@ import { Observable } from 'rxjs';
 import {  TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 @Component({
-  selector: 'app-rfafilled',
-  templateUrl: './rfafilled.component.html',
-  styleUrls: ['./rfafilled.component.scss']
+  selector: 'app-popup',
+  templateUrl: './popup.component.html',
+  styleUrls: ['./popup.component.scss']
 })
-export class RfafilledComponent implements OnInit {
+export class PopupComponent implements OnInit {
+  @Input() formIdpassed: string | undefined;
+   formId: any | undefined;
 
   constructor(private modalService: BsModalService, private route: ActivatedRoute, public uploadService: UploadFilesService, private rfaService: RfaService, private mic_record: RecordMicService, private sanatizer: DomSanitizer) {
     // @ts-ignore
-
+    if (this.formIdpassed != undefined) {
+      this.formId = this.formIdpassed;
+    }
   }    modalRef?: BsModalRef;
 
-  formId  = this.route.snapshot.paramMap.get('id');
+
   // @ts-ignore
   Rfafilled: any =  this.rfaService.getRfa(this.formId).subscribe(
     data => {
@@ -61,7 +65,7 @@ export class RfafilledComponent implements OnInit {
         this.form.cat4 = this.Rfafilled.cat4,
         this.form.mri5 = this.Rfafilled.mri5,
         this.form.ultrasound6 = this.Rfafilled.ultrasound6,
-       this.form.voice_notes = this.Rfafilled.voice_notes,
+        this.form.voice_notes = this.Rfafilled.voice_notes,
         this.form.status = this.Rfafilled.status
     },
     err => {
@@ -119,12 +123,15 @@ export class RfafilledComponent implements OnInit {
 
   };
 
+  // @ts-ignore
+  // @ts-ignore
   form2: any = {
-    id: this.formId,
+    // @ts-ignore
+    id: this.formIdpassed,
     reasons: null,
-};
+  };
 // tslint:disable-next-line:typedef
-openModal(template: TemplateRef<any>) {
+  openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
 
@@ -148,24 +155,26 @@ openModal(template: TemplateRef<any>) {
       }
     );
   }
-accept(): void{
-  this.rfaService.acceptRfa(
-    //@ts-ignore
-    this.formId
-  ).subscribe(
+  accept(): void{
+    this.rfaService.acceptRfa(
+      //@ts-ignore
+      this.formId
+    ).subscribe(
       (data: any) => {
-      console.log(data);
-    },
+        console.log(data);
+      },
       (err: any) => {
-      console.log(err);
-    }
-  );
-}
+        console.log(err);
+      }
+    );
+  }
   ngOnInit(): void {
     // @ts-ignore
     // @ts-ignore
     // this.createAudioElement2(this.Rfafilled.voice_notes);
-
+    if (this.formIdpassed != undefined) {
+      this.formId = this.formIdpassed;
+    }
   }
 
   nameUpdate($event: any): void{

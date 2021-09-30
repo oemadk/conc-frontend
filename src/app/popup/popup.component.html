@@ -1,0 +1,380 @@
+<button type="button" class="btn btn-outline-primary btn-sm text-center d-flex flex-row justify-content-center" (click)="openModal(template3);">Show RFA</button>
+
+<ng-template #template3>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">RFA Admission</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+      <form
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="row">
+          <div class="col"><button class="btn btn-outline-primary" type="button" style="border-radius: 3px;border-color: rgb(255,255,255);border-bottom-style: none;border-bottom-color: rgb(255,255,255);"><i class="fa fa-chevron-left"></i>&nbsp;Back</button></div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h3>Admission</h3>
+          </div>
+        </div>
+        <div class="textOnInput" style="margin-top:20px;">
+          <label for="inputText">Patient Personal Info</label>
+          <div style="width: 100%; height: auto;border-radius:10px; ;border: 4px solid black; margin-bottom:20px;">
+            <div style="display:block">
+              <div class="responsive-flex" style="display:flex;padding:20px; padding-bottom:0px;flex-wrap: wrap; flex:1; flex-direction: row; align-content:center;margin-bottom:10px;">
+                <div style="flex:1;padding: 5px;">
+                  <div class="textOnInput">
+                    <label for="inputText">Name</label>
+                    <input class="form-control" placeholder="Full Name" type="text" name="name"   [(ngModel)]="form.name"
+                           required
+                           #name="ngModel">
+                  </div>
+                </div>
+                <div style="flex:1;padding: 5px;">
+                  <div class="textOnInput">
+                    <label for="inputText">Date of Birth</label>
+                    <input class="form-control" type="text" name="date_of_birth"   [(ngModel)]="form.date_of_birth"
+                           required
+                           #date_of_birth="ngModel">
+                  </div>
+                </div>
+                <div style="flex:0.5;padding: 5px;">
+                  <div class="textOnInput">
+                    <label for="inputText">Age</label>
+                    <input class="form-control" type="number" name="age"   [(ngModel)]="form.age"
+                           required
+                           #age="ngModel">
+                  </div>
+                </div>
+              </div>
+              <div style="display:block">
+                <div class="responsive-flex" style="display:flex;padding:20px;padding-bottom:0px; flex:1; flex-direction: row; align-content:center;margin-bottom:10px;">
+                  <div style="flex:0.5;padding: 5px;">
+                    <div class="textOnInput">
+                      <label for="inputText">Height</label>
+                      <input class="form-control" placeholder="Height cm" type="number" name="height"   [(ngModel)]="form.height"
+                             required
+                             #height="ngModel">
+                    </div>
+                  </div>
+                  <div style="flex:0.5;padding: 5px;">
+                    <div class="textOnInput">
+                      <label for="inputText">Weight</label>
+                      <input class="form-control" placeholder="Weight KG" type="number" name="weight"   [(ngModel)]="form.weight"
+                             required
+                             #weight="ngModel">
+                    </div>
+                  </div>
+                  <div style="flex:1;padding: 5px;">
+                    <div class="textOnInput">
+                      <label for="inputText">Department</label>
+                      <input class="form-control" placeholder="Medical Department: ER/OR/IP" type="number"  name="department"  [(ngModel)]="form.department"
+                             required
+                             #department="ngModel">
+                    </div>
+                  </div>
+                  <div style="flex:0.5;padding: 5px;">
+                  </div>
+                </div>
+              </div>
+              <div style="display:block">
+                <div class="responsive-flex" style="display:flex;padding:20px; flex:1; flex-direction: row; align-content:center;margin-bottom:10px;">
+                  <div style="flex:0.5;padding: 5px;">
+                    <div class="textOnInput">
+                      <label for="inputText">Date of Admission</label>
+                      <input class="form-control" placeholder="date" type="text" name="date_of_admission"
+                             [(ngModel)]="form.date_of_admission"
+                             required
+                             #date_of_admission="ngModel"
+                      >
+                    </div>
+                  </div>
+                  <div style="flex:0.5;padding: 5px;">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="textOnInput" style="margin-top:20px;">
+          <label for="inputText">Reasons for Requesting Transfer to ICU </label>
+          <div style="width: 100%;border-radius:10px; height: auto;border: 4px solid black; margin-bottom:20px;">
+            <div style="display:block">
+              <div style="display:flex;padding:20px; flex:1; flex-direction: row; align-content:center;margin-bottom:10px;">
+                <div style="flex:1;padding: 5px;">
+                  <div class="textOnInput">
+                    <label for="inputText">Original Diagnosis</label>
+                    <input class="form-control" placeholder="Original Diagnosis" name="original_diagnosis" type="text"
+                           [(ngModel)]="form.original_diagnosis"
+                           required
+                           #original_diagnosis="ngModel"
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="textOnInput" style="margin-top:20px;">
+                <label for="inputText" style="margin-left:20px;">Reasons for Transfer </label>
+                <div style="width: 100%; height: auto;border-top: 2px solid black; margin-bottom:20px;">
+                  <div style="display:block">
+                    <div class="responsive-width2" style="display:flex;padding:20px; flex:1; flex-direction: row; align-content:center;margin-bottom:10px;">
+                      <div class="responsive-width" style="display:flex;padding:20px; flex:1; flex-direction: column; align-content:center;margin-bottom:10px;">
+                <span><input type="checkbox" value="1"  name="original_diagnosis"
+                             [(ngModel)]="form.shortness_of_breath"
+                             required
+                             #shortness_of_breath="ngModel"><b>  Shortness of Beath</b></span>
+                        <span><input type="checkbox" name="altered_state_of_mind"
+                                     [(ngModel)]="form.altered_state_of_mind"
+                                     required
+                                     #altered_state_of_mind="ngModel"><b>  Altered Mental state</b></span>
+
+                        <span><input type="checkbox" name="chest_pain"
+                                     [(ngModel)]="form.chest_pain"
+                                     required
+                                     #chest_pain="ngModel"><b>  Chest pain</b></span>
+                        <span><input type="checkbox" name="hypotension"
+                                     [(ngModel)]="form.hypotension"
+                                     required
+                                     #hypotension="ngModel" ><b>  Hypotension</b></span>
+
+                      </div>
+                      <div class="responsive-width2" style="display:flex;padding:20px; flex:1; flex-direction: column; align-content:center;margin-bottom:10px;">
+                <span><input type="checkbox"
+                             name="cardiac_arrest"
+                             [(ngModel)]="form.cardiac_arrest"
+                             required
+                             #cardiac_arrest="ngModel"><b>  Cardiac arrest</b></span>
+                        <span><input type="checkbox"
+                                     name="bleeding"
+                                     [(ngModel)]="form.bleeding"
+                                     required
+                                     #bleeding="ngModel"><b>  Bleeding</b></span>
+                        <span><input type="checkbox"
+                                     name="arrhythmia"
+                                     [(ngModel)]="form.arrhythmia"
+                                     required
+                                     #arrhythmia="ngModel"><b>  Arrhythmia</b></span>
+                        <span><input type="checkbox"
+                                     name="seizure"
+                                     [(ngModel)]="form.seizure"
+                                     required
+                                     #seizure="ngModel"><b>  Seizure</b></span>
+
+                      </div>
+                      <div class="responsive-width2" style="display:flex;padding:20px; flex:1; flex-direction: column; align-content:center;margin-bottom:10px;">
+                <span><input type="checkbox"
+                             name="focal_deficit"
+                             [(ngModel)]="form.focal_deficit"
+                             required
+                             #focal_deficit="ngModel"><b>  Focal deficit</b></span>
+                        <span><input type="checkbox" name="posto"
+                                     [(ngModel)]="form.posto"
+                                     required
+                                     #posto="ngModel"><b>  Postoperative</b></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="responsive-col" style="display:flex; flex-direction:row; flex:1">
+          <div class="responsive-col" style="display:flex;flex-direction:row;flex:2">
+            <div class="responsive-col" style="display:flex;flex-direction:row;flex:1;">
+              <div class="textOnInput" style="margin-top:20px; width:100%;">
+                <label for="inputText">Digital Attachements</label>
+                <div style="width: 98%; height: 100%;border-radius:10px;border: 4px solid black; margin-bottom:20px;">
+                  <div style="display:block">
+                    <div style="padding:20px; flex:1; flex-direction: row; align-content:center;margin-bottom:10px;">
+                      <!--                <app-upload-files (clinicalChild)="nameUpdate($event)"></app-upload-files>-->
+                      <div class="row" *ngIf="form.clinical != null">
+                        <div class="col-6"><p>clinical report</p></div>
+                        <div class="col-6"><a [href]="form.clinical">Open</a></div>
+                      </div>
+                      <div class="row" *ngIf="form.lab != null">
+                        <div class="col-6"><p>Lab report</p></div>
+                        <div class="col-6"><a [href]="form.lab">Open</a></div>
+                      </div>
+                      <div class="row" *ngIf="form.xray != null">
+                        <div class="col-6"><p>X-ray</p></div>
+                        <div class="col-6"><a [href]="form.xray">Open</a></div>
+                      </div>
+                      <div class="row" *ngIf="form.cat != null">
+                        <div class="col-6"><p>CAT SCAN report</p></div>
+                        <div class="col-6"><a [href]="form.cat">Open</a></div>
+                      </div>
+                      <div class="row" *ngIf="form.mri != null">
+                        <div class="col-6"><p>mri report</p></div>
+                        <div class="col-6"><a [href]="form.mri">Open</a></div>
+                      </div>
+                      <div class="row" *ngIf="form.ultrasound != null">
+                        <div class="col-6"><p>ultrasound report</p></div>
+                        <div class="col-6"><a [href]="form.ultrasound">Open</a></div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="responsive-col" style="display:flex;flex-direction:row;flex:1;">
+              <div class="textOnInput" style="width:100%;margin-top:20px;">
+                <label for="inputText">Physically sent with patient</label>
+                <div style="width: 100%; height: 100%;border-radius:10px;border: 4px solid black; margin-bottom:20px;">
+                  <div style="display:block">
+                    <div class="responsive-col" style="display:flex;padding:20px; flex:1; flex-direction: row; align-content:center;margin-bottom:10px;">
+                      <div style="flex:1;padding: 5px;">
+                    <span style="display:flex;justify-content: space-between">
+                        <p style="flex:1"><input type="checkbox" name="clinical2"
+                                                 [(ngModel)]="form.clinical2"
+                                                 required
+                                                 #clinical2="ngModel"> Clinical report</p>
+                    </span>
+                        <span style="display:flex;justify-content: space-between">
+                        <p style="flex:1"><input type="checkbox" name="lab2"
+                                                 [(ngModel)]="form.lab2"
+                                                 required
+                                                 #lab2="ngModel"> Lab report</p>
+                    </span>
+                        <span style="display:flex;justify-content: space-between">
+                        <p style="flex:1"><input type="checkbox" name="xray3"
+                                                 [(ngModel)]="form.xray3"
+                                                 required
+                                                 #xray3="ngModel"> X-Ray Image</p>
+                    </span>
+                        <span style="display:flex;justify-content: space-between">
+                        <p style="flex:1"><input type="checkbox" name="cat4"
+                                                 [(ngModel)]="form.cat4"
+                                                 required
+                                                 #cat4="ngModel"> CAT Scan Image </p>
+                    </span>
+                        <span style="display:flex;justify-content: space-between">
+                        <p style="flex:1"><input type="checkbox" name="mri5"
+                                                 [(ngModel)]="form.mri5"
+                                                 required
+                                                 #mri5="ngModel"> MRI Image</p>
+                    </span>
+                        <span style="display:flex;justify-content: space-between">
+                        <p style="flex:1"><input type="checkbox" name="ultrasound6"
+                                                 [(ngModel)]="form.ultrasound6"
+                                                 required
+                                                 #ultrasound6="ngModel"> Ultrasound Image</p>
+                    </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;flex-direction:column;flex:1;    justify-content: space-evenly;">
+            <div style="display:flex;flex-direction:row;flex:1">
+              <div class="textOnInput" style="margin-top:20px; width:100%;">
+                <label for="inputText">Voice Notes</label>
+                <div style="width: 100%; height: auto;border-radius:10px;border: 1px solid #ced4da; margin-bottom:20px;">
+                  <div style="display:block">
+                    <div style="display:flex;padding:20px; flex:1; flex-direction: row; align-content:center;margin-bottom:10px;">
+                      <div style="flex:1;padding: 5px;">
+                        <!--                              audio record-->
+                        <article style="text-align: center">
+                          <button class="record" (click)="startRecording()">Start Recording</button>
+                          <button class="stop" (click)="stopRecording()">Stop Recording</button>
+                          <!-- <section class="sound-clips"> -->
+                          <img style="width: 7vw;
+    display: block;
+    text-align: center;
+    margin: 0 auto; margin-top:20px;" src="assets/img/records.png">
+                        </article>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal fade bd-example-modal-lrg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lrg">
+            <div class="modal-content">
+              <div style="padding:20px;display:flex;">
+                <h4 style=" padding-top: 50%;
+    padding-bottom: 50%;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}"><a  style="text-decoration: none;color:black;"><b>Your Request Has Been <br> Submitted Successfully</b></a></h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="row" style="margin-bottom:20px;">
+        <div class="col-6 text-center">
+          <button style="float:right" type="button" class="btn btn-outline-primary btn-sm text-center d-flex flex-row justify-content-center" (click)="openModal(template)">Decline</button>
+
+        </div>
+        <div class="col-6 text-center">
+          <button type="button" class="btn btn-outline-primary btn-sm text-center d-flex flex-row justify-content-center" (click)="openModal(template2); accept()">Confirm</button>
+
+        </div>
+
+      </div>
+    </div>
+    <ng-template #template>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Modal</h4>
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+          <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form
+          name="form2"
+          (ngSubmit)="f2.form.valid && onSubmit2()"
+          #f2="ngForm"
+          novalidate
+        >
+          <div class="textOnInput">
+            <label for="inputText">Reasons</label>
+            <input class="form-control" placeholder="reasons" type="text" name="reasons"   [(ngModel)]="form2.reasons"
+                   required
+                   #reasons="ngModel">
+          </div>
+          <button class="btn btn-outline-primary btn-sm text-center d-flex flex-row justify-content-center" (click)="onSubmit2()">Submit</button>
+        </form>
+      </div>
+    </ng-template>
+
+
+    <ng-template #template2>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Modal</h4>
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+          <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Confirmed
+      </div>
+    </ng-template>
+
+    <!--<div style="text-align:center;margin-top: 200px;" >-->
+    <!--  <button (click)="initiateRecording()" class="btn btn-primary" *ngIf="!recording" style="cursor: pointer;background-color: green;color: white;font-size: 40px;"> Start Recording </button>-->
+    <!--  <button (click)="stopRecording()" class="btn btn-danger" *ngIf="recording" style="cursor: pointer;background-color: red;color: white;font-size: 40px;"> Stop Recording </button>-->
+    <!--  <audio controls="" *ngIf="url">-->
+    <!--    <source [src]="sanitize(url)" type="audio/wav">-->
+    <!--  </audio>-->
+    <!--</div>-->
+
+  </div>
+</ng-template>

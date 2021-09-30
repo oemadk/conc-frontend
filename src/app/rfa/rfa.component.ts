@@ -9,6 +9,8 @@ import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {  TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { RouterModule, Routes, ActivatedRoute, Router } from '@angular/router';
+
 @Component({
   selector: 'app-rfa',
   templateUrl: './rfa.component.html',
@@ -77,7 +79,7 @@ export class RfaComponent implements OnInit {
   modalRef?: BsModalRef;
 
   fileInfos?: Observable<any>;
-  constructor(private modalService: BsModalService, public uploadService: UploadFilesService, private rfaService: RfaService, private mic_record: RecordMicService, private sanatizer: DomSanitizer) {
+  constructor(private router: Router, private modalService: BsModalService, public uploadService: UploadFilesService, private rfaService: RfaService, private mic_record: RecordMicService, private sanatizer: DomSanitizer) {
   }
   // tslint:disable-next-line:typedef
   sanitize(url: string) {
@@ -94,7 +96,6 @@ export class RfaComponent implements OnInit {
             this.createAudioElement2(file.name);
           }
         });
-
   }
 
   nameUpdate($event: Array<any>): void{
@@ -215,7 +216,16 @@ export class RfaComponent implements OnInit {
     // this.speaker_audio.record();
     console.log('Speaker Reccording Started');
   }
+  goto(){
+    let a = localStorage.getItem('tag');
+    if (a == 'it'){
+      this.router.navigate(['icudirectrequest']);
+    }else{
+      this.router.navigate(['icuhome'])
 
+    }
+
+  }
   stopRecording(){
     this.mic_audio.stop((blob: Blob) => {
       console.log(blob);
@@ -238,7 +248,7 @@ export class RfaComponent implements OnInit {
     console.log('Inside blob to File conversion');
     const b: any = (blob);
     b.lastModified = new Date();
-    b.name = fileName;
+    b.name = this.form.name;
     const auiodMicFile: File = blob as File;
     console.log(auiodMicFile, 'what is this?');
     // return auiodMicFile;
@@ -252,6 +262,8 @@ export class RfaComponent implements OnInit {
             this.progress = Math.round(100 * event.loaded / event.total);
           } else if (event instanceof HttpResponse) {
             this.message = event.body.message;
+            this.form.voice_notes =  'http://23.96.36.35:8080/files/' + this.message;
+            console.log('thismessage ha', this.message);
             this.fileInfos = this.uploadService.getFiles();
           }
         },
@@ -478,11 +490,12 @@ export class RfaComponent implements OnInit {
 
     $.ajax({
       url: 'http://52.170.142.161:3000/invite',
+      // url: 'http://localhost:3000/invite',
       type: 'POST',
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({
         roomId: room,
-        link: 'https://conc-frontend.vercel.app/rfafilled/'+ this.rfaidfromResponse
+        link: 'http://23.96.36.35/rfafilled/'+ this.rfaidfromResponse
       }),
       dataType: 'json',
       success(data: any) {

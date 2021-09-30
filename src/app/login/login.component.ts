@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
     if (this.number){
       if (this.number === '1'){
         this.loginTitle = 'ER/OR/IP Login';
+        localStorage.setItem('tag', 'it');
       }else if (this.number === '2'){
         this.loginTitle = 'Consultant ICU/EXT login';
         localStorage.setItem('user', 'user1');
