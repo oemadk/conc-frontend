@@ -1,4 +1,4 @@
-<div id="app" *ngIf="isLoggedIn || nav != 'off'">
+<div style="z-index: -1" id="app" *ngIf="isLoggedIn">
   <a class="nav-link" (click)="logout()" style="position:absolute;    z-index: 9999;">LogOut</a>
 
   <nav class="navbar navbar-expand  " style="justify-content: flex-end;">

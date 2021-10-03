@@ -8,6 +8,7 @@ import { RecordMicService } from '../record-mic.service';
 import { UploadFilesService } from 'src/app/_services/upload-files.service';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {Location} from '@angular/common';
 
 import {  TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
@@ -18,11 +19,13 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class RfafilledComponent implements OnInit {
 
-  constructor(private modalService: BsModalService, private route: ActivatedRoute, public uploadService: UploadFilesService, private rfaService: RfaService, private mic_record: RecordMicService, private sanatizer: DomSanitizer) {
+  constructor(private _location: Location, private modalService: BsModalService, private route: ActivatedRoute, public uploadService: UploadFilesService, private rfaService: RfaService, private mic_record: RecordMicService, private sanatizer: DomSanitizer) {
     // @ts-ignore
 
   }    modalRef?: BsModalRef;
-
+  backClicked() {
+    this._location.back();
+  }
   formId  = this.route.snapshot.paramMap.get('id');
   // @ts-ignore
   Rfafilled: any =  this.rfaService.getRfa(this.formId).subscribe(

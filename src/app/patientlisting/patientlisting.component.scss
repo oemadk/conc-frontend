@@ -1,0 +1,21 @@
+.flex-container{
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+.flex-items{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+}
+.flex-img{
+  width: 100px;
+  height: auto;
+}
+.accordian{
+  width:100%;
+}

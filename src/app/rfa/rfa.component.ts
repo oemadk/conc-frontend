@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 import {  TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { RouterModule, Routes, ActivatedRoute, Router } from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-rfa',
@@ -79,10 +80,13 @@ export class RfaComponent implements OnInit {
   modalRef?: BsModalRef;
 
   fileInfos?: Observable<any>;
-  constructor(private router: Router, private modalService: BsModalService, public uploadService: UploadFilesService, private rfaService: RfaService, private mic_record: RecordMicService, private sanatizer: DomSanitizer) {
+  constructor(private _location: Location, private router: Router, private modalService: BsModalService, public uploadService: UploadFilesService, private rfaService: RfaService, private mic_record: RecordMicService, private sanatizer: DomSanitizer) {
   }
   // tslint:disable-next-line:typedef
   sanitize(url: string) {
+  }
+  backClicked() {
+    this._location.back();
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);

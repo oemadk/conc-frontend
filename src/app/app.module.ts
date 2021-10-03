@@ -32,6 +32,7 @@ import { ChatComponent } from './chat/chat.component';
 import { PatientlistingComponent } from './patientlisting/patientlisting.component';
 import * as $ from 'jquery';
 import { PopupComponent } from './popup/popup.component';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +66,8 @@ import { PopupComponent } from './popup/popup.component';
     FontAwesomeModule,
     FormsModule,
     HttpClientModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    AccordionModule.forRoot()
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
