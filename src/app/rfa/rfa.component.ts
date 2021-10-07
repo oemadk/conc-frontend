@@ -493,13 +493,14 @@ export class RfaComponent implements OnInit {
     });
 
     $.ajax({
-      url: 'http://52.170.142.161:3000/invite',
+      // url: 'http://52.170.142.161:3000/invite',
+      url: 'https://bot.eastus.cloudapp.azure.com/invite',
       // url: 'http://localhost:3000/invite',
       type: 'POST',
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({
         roomId: room,
-        link: 'http://23.96.36.35/rfafilled/'+ this.rfaidfromResponse
+        link: 'https://conc-frontend.vercel.app/rfafilled/'+ this.rfaidfromResponse
       }),
       dataType: 'json',
       success(data: any) {
