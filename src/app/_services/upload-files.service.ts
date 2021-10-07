@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UploadFilesService {
-  private baseUrl = 'http://23.96.36.35:8080';
+  private baseUrl = 'https://concolio.eastus.cloudapp.azure.com';
 
   constructor(private http: HttpClient) { }
 

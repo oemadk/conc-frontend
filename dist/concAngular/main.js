@@ -1230,7 +1230,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const AUTH_API = 'http://23.96.36.35:8080/api/auth/';
+const AUTH_API = 'https://concolio.eastus.cloudapp.azure.com/api/auth/';
 const httpOptions = {
     headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpHeaders"]({ 'Content-Type': 'application/json' })
 };
@@ -2912,7 +2912,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const AUTH_API = 'http://23.96.36.35:8080/api/rfa';
+const AUTH_API = 'https://concolio.eastus.cloudapp.azure.com/api/rfa';
 const httpOptions = {
     headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpHeaders"]({ 'Content-Type': 'application/json' })
 };
@@ -3295,7 +3295,7 @@ __webpack_require__.r(__webpack_exports__);
 class UploadFilesService {
     constructor(http) {
         this.http = http;
-        this.baseUrl = 'http://23.96.36.35:8080';
+        this.baseUrl = 'https://concolio.eastus.cloudapp.azure.com';
     }
     upload(file) {
         const formData = new FormData();
@@ -4425,7 +4425,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
 
 
-const API_URL = 'http://23.96.36.35:8080/api/test/';
+const API_URL = 'https://concolio.eastus.cloudapp.azure.com/api/test/';
 class UserService {
     constructor(http) {
         this.http = http;
@@ -5203,22 +5203,22 @@ class RfaComponent {
         const name = $event.name;
         console.log(name);
         if (categori === 'clinical') {
-            this.form.clinical = 'http://23.96.36.35:8080/files/' + name;
+            this.form.clinical = 'https://concolio.eastus.cloudapp.azure.com/files/' + name;
         }
         else if (categori === 'lab') {
-            this.form.lab = 'http://23.96.36.35:8080/files/' + name;
+            this.form.lab = 'https://concolio.eastus.cloudapp.azure.com/files/' + name;
         }
         else if (categori === 'xray') {
-            this.form.xray = 'http://23.96.36.35:8080/files/' + name;
+            this.form.xray = 'https://concolio.eastus.cloudapp.azure.com/files/' + name;
         }
         else if (categori === 'catscan') {
-            this.form.cat = 'http://23.96.36.35:8080/files/' + name;
+            this.form.cat = 'https://concolio.eastus.cloudapp.azure.com/files/' + name;
         }
         else if (categori === 'mri') {
-            this.form.mri = 'http://23.96.36.35:8080/files/' + name;
+            this.form.mri = 'https://concolio.eastus.cloudapp.azure.com/files/' + name;
         }
         else if (categori === 'ultrasound') {
-            this.form.ultrasound = 'http://23.96.36.35:8080/files/' + name;
+            this.form.ultrasound = 'https://concolio.eastus.cloudapp.azure.com/files/' + name;
         }
     }
     onSubmit() {
@@ -5286,7 +5286,7 @@ class RfaComponent {
                 }
                 else if (event instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpResponse"]) {
                     this.message = event.body.message;
-                    this.form.voice_notes = 'http://23.96.36.35:8080/files/' + this.message;
+                    this.form.voice_notes = 'https://concolio.eastus.cloudapp.azure.com/files/' + this.message;
                     console.log('thismessage ha', this.message);
                     this.fileInfos = this.uploadService.getFiles();
                 }
@@ -5320,7 +5320,7 @@ class RfaComponent {
         articleMain.appendChild(clipContainer);
         const blob = url;
         // const audioURL = window.URL.createObjectURL(blob);
-        audio.src = 'http://23.96.36.35:8080/files/' + blob;
+        audio.src = 'https://concolio.eastus.cloudapp.azure.com/files/' + blob;
         this.form.voice_notes = audio.src;
         console.log(audio.src, 'audio source thingy');
         //  Delete button functionality
