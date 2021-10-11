@@ -92,14 +92,14 @@ export class RfaComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
   ngOnInit(): void {
-    this.uploadService.getFiles()
-      .subscribe(
-        (data) => {
-          for (const file of data){
-            console.log(file);
-            this.createAudioElement2(file.name);
-          }
-        });
+    // this.uploadService.getFiles()
+    //   .subscribe(
+    //     (data) => {
+    //       for (const file of data){
+    //         console.log(file);
+    //         this.createAudioElement2(file.name);
+    //       }
+    //     });
   }
 
   nameUpdate($event: Array<any>): void{
@@ -279,7 +279,7 @@ export class RfaComponent implements OnInit {
             this.message = event.body.message;
             this.form.voice_notes =  'https://concolio.eastus.cloudapp.azure.com/files/' + this.message;
             console.log('thismessage ha', this.message);
-            this.fileInfos = this.uploadService.getFiles();
+            // this.fileInfos = this.uploadService.getFiles();
           }
         },
         (err: any) => {
@@ -374,7 +374,7 @@ export class RfaComponent implements OnInit {
               this.progress = Math.round(100 * event.loaded / event.total);
             } else if (event instanceof HttpResponse) {
               this.message = event.body.message;
-              this.fileInfos = this.uploadService.getFiles();
+              // this.fileInfos = this.uploadService.getFiles();
             }
           },
           (err: any) => {
