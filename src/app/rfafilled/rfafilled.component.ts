@@ -23,9 +23,6 @@ export class RfafilledComponent implements OnInit {
     // @ts-ignore
 
   }    modalRef?: BsModalRef;
-  backClicked() {
-    this._location.back();
-  }
   formId  = this.route.snapshot.paramMap.get('id');
   // @ts-ignore
   Rfafilled: any =  this.rfaService.getRfa(this.formId).subscribe(
@@ -65,8 +62,11 @@ export class RfafilledComponent implements OnInit {
         this.form.mri5 = this.Rfafilled.mri5,
         this.form.ultrasound6 = this.Rfafilled.ultrasound6,
        this.form.voice_notes = this.Rfafilled.voice_notes,
-        this.form.status = this.Rfafilled.status
-    },
+        this.form.status = this.Rfafilled.status,
+        console.log(this.Rfafilled.voice_notes),
+      this.createAudioElement2(this.Rfafilled.voice_notes);
+
+    } ,
     err => {
     }
   );
@@ -126,6 +126,9 @@ export class RfafilledComponent implements OnInit {
     id: this.formId,
     reasons: null,
 };
+  backClicked() {
+    this._location.back();
+  }
 // tslint:disable-next-line:typedef
 openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
@@ -153,7 +156,7 @@ openModal(template: TemplateRef<any>) {
   }
 accept(): void{
   this.rfaService.acceptRfa(
-    //@ts-ignore
+    // @ts-ignore
     this.formId
   ).subscribe(
       (data: any) => {
@@ -167,7 +170,7 @@ accept(): void{
   ngOnInit(): void {
     // @ts-ignore
     // @ts-ignore
-    // this.createAudioElement2(this.Rfafilled.voice_notes);
+
 
   }
 
@@ -341,9 +344,18 @@ accept(): void{
     // @ts-ignore
     articleMain.appendChild(clipContainer);
     const blob = url;
-    // const audioURL = window.URL.createObjectURL(blob);
-    audio.src = 'http://localhost:8080/files/' + blob;
-    this.form.voice_notes = audio.src;
+    console.log(url, 'the blob 1');
+    const src = url;
+    fetch(src)
+      // @ts-ignore
+      .then(response => response.blob())
+      // tslint:disable-next-line:no-shadowed-variable
+      .then(blob => {
+       audio.src =  window.URL.createObjectURL(blob);
+      });
+
+    // audio.src = 'http://localhost:8080/files/' + blob;
+    // this.form.voice_notes = audio.src;
     console.log(audio.src, 'audio source thingy');
 
 //  Delete button functionality

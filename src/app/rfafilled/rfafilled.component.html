@@ -190,27 +190,27 @@
 <!--                <app-upload-files (clinicalChild)="nameUpdate($event)"></app-upload-files>-->
                 <div class="row" *ngIf="form.clinical != null">
                     <div class="col-6"><p>clinical report</p></div>
-                     <div class="col-6"><a [href]="form.clinical">Open</a></div>
+                     <div class="col-6"><a (click)="openModal(templateImage);">Open</a></div>
                 </div>
                 <div class="row" *ngIf="form.lab != null">
                   <div class="col-6"><p>Lab report</p></div>
-                  <div class="col-6"><a [href]="form.lab">Open</a></div>
+                  <div class="col-6"><a (click)="openModal(templateImage2);">Open</a></div>
                 </div>
                 <div class="row" *ngIf="form.xray != null">
                   <div class="col-6"><p>X-ray</p></div>
-                  <div class="col-6"><a [href]="form.xray">Open</a></div>
+                  <div class="col-6"><a (click)="openModal(templateImage3);">Open</a></div>
                 </div>
                 <div class="row" *ngIf="form.cat != null">
                   <div class="col-6"><p>CAT SCAN report</p></div>
-                  <div class="col-6"><a [href]="form.cat">Open</a></div>
+                  <div class="col-6"><a (click)="openModal(templateImage4);">Open</a></div>
                 </div>
                 <div class="row" *ngIf="form.mri != null">
                   <div class="col-6"><p>mri report</p></div>
-                  <div class="col-6"><a [href]="form.mri">Open</a></div>
+                  <div class="col-6"><a (click)="openModal(templateImage5);">Open</a></div>
                 </div>
                 <div class="row" *ngIf="form.ultrasound != null">
                   <div class="col-6"><p>ultrasound report</p></div>
-                  <div class="col-6"><a [href]="form.ultrasound">Open</a></div>
+                  <div class="col-6"><a (click)="openModal(templateImage6);">Open</a></div>
                 </div>
 
               </div>
@@ -280,8 +280,8 @@
                 <div style="flex:1;padding: 5px;">
                   <!--                              audio record-->
                   <article style="text-align: center">
-                    <button class="record" (click)="startRecording()">Start Recording</button>
-                    <button class="stop" (click)="stopRecording()">Stop Recording</button>
+<!--                    <button class="record" (click)="startRecording()">Start Recording</button>-->
+<!--                    <button class="stop" (click)="stopRecording()">Stop Recording</button>-->
                     <!-- <section class="sound-clips"> -->
                     <img style="width: 7vw;
     display: block;
@@ -362,6 +362,73 @@
   </div>
 </ng-template>
 
+
+<ng-template #templateImage>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Image Viewer</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <img style="width: -webkit-fill-available;" [src]="form.clinical">
+  </div>
+</ng-template>
+<ng-template #templateImage2>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Image Viewer</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <img style="width: -webkit-fill-available;" [src]="form.lab">
+  </div>
+</ng-template>
+<ng-template #templateImage3>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Image Viewer</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <img style="width: -webkit-fill-available;" [src]="form.xray">
+  </div>
+</ng-template>
+<ng-template #templateImage4>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Image Viewer</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <img style="width: -webkit-fill-available;" [src]="form.cat">
+  </div>
+</ng-template>
+<ng-template #templateImage5>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Image Viewer</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <img style="width: -webkit-fill-available;" [src]="form.mri">
+  </div>
+</ng-template>
+<ng-template #templateImage6>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Image Viewer</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <img style="width: -webkit-fill-available;" [src]="form.ultrasound">
+  </div>
+</ng-template>
 <!--<div style="text-align:center;margin-top: 200px;" >-->
 <!--  <button (click)="initiateRecording()" class="btn btn-primary" *ngIf="!recording" style="cursor: pointer;background-color: green;color: white;font-size: 40px;"> Start Recording </button>-->
 <!--  <button (click)="stopRecording()" class="btn btn-danger" *ngIf="recording" style="cursor: pointer;background-color: red;color: white;font-size: 40px;"> Stop Recording </button>-->
