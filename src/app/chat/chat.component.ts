@@ -12,9 +12,11 @@ import {TokenStorageService} from "../_services/token-storage.service";
 export class ChatComponent implements OnInit {
   accountInfo: { access_token: string; user_id: any; } | undefined;
   sessionid: any;
+  sideMenu: boolean = false;
   eventStreamInfo = {
     from: 'END'
   };
+  formid = '615f64fd330586a4fc5e8aa8';
   chattingbutton = true;
   roomInfo: any[] | undefined;
   memberInfo = [];

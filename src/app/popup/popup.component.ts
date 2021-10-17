@@ -17,14 +17,11 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
   styleUrls: ['./popup.component.scss']
 })
 export class PopupComponent implements OnInit {
-  @Input() formIdpassed: string | undefined;
-   formId: any | undefined;
+  // @ts-ignore
+  @Input() formIdpassed: string;
+   formId = "615f64fd330586a4fc5e8aa8";
 
   constructor(private modalService: BsModalService, private route: ActivatedRoute, public uploadService: UploadFilesService, private rfaService: RfaService, private mic_record: RecordMicService, private sanatizer: DomSanitizer) {
-    // @ts-ignore
-    if (this.formIdpassed != undefined) {
-      this.formId = this.formIdpassed;
-    }
   }    modalRef?: BsModalRef;
 
 
