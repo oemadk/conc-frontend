@@ -1,9 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 declare var $: any;
 import { RouterModule, Routes, ActivatedRoute, Router } from '@angular/router';
-import {AuthService} from "../_services/auth.service";
-import {TokenStorageService} from "../_services/token-storage.service";
-
+import {AuthService} from '../_services/auth.service';
+import {TokenStorageService} from '../_services/token-storage.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer} from '@angular/platform-browser';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -12,10 +14,12 @@ import {TokenStorageService} from "../_services/token-storage.service";
 export class ChatComponent implements OnInit {
   accountInfo: { access_token: string; user_id: any; } | undefined;
   sessionid: any;
-  sideMenu: boolean = false;
+  sideMenu = false;
   eventStreamInfo = {
     from: 'END'
   };
+  modalRef?: BsModalRef;
+  urlMain: any;
   formid = '615f64fd330586a4fc5e8aa8';
   chattingbutton = true;
   roomInfo: any[] | undefined;
@@ -25,18 +29,43 @@ export class ChatComponent implements OnInit {
 
   private currentUser: { username: 'admin'; password: '12345678'; } | undefined;
 
-  constructor( private route: ActivatedRoute,
-              private router: Router) {
+  constructor( private sanitizer: DomSanitizer, private modalService: BsModalService, private route: ActivatedRoute,
+               private router: Router) {
     console.log(this.number);
     localStorage.setItem('nav', 'off');
   }
 
   ngOnInit(): void {
     localStorage.setItem('nav', 'off');
-
     this.connect();
+    // tslint:disable-next-line:only-arrow-functions prefer-const
+    const self = this;
+    document.addEventListener('click', function(e){
+      console.log(e);
+      // @ts-ignore
+      if (e.target.id === 'a' ){
+        // @ts-ignore
+        console.log(e.target.attributes.value.value);
+        // @ts-ignore
+        self.urlMain = self.sanitizer.bypassSecurityTrustResourceUrl(e.target.attributes.value.value);
+        // @ts-ignore
+        document.getElementById('openpopup').click();
+        console.log(self.urlMain);
+      }else { // @ts-ignore
+        if  (e.target.id === 'medical' ){
+                        // @ts-ignore
+                        console.log(e.target.attributes.value.value);
+                        // @ts-ignore
+                        // @ts-ignore
+                        document.getElementById('openpopup2').click();
+                        console.log(self.urlMain);
+                      }
+      }
+    });
   }
-
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
   onLoggedIn(data: { access_token: string; user_id: any; } | undefined): void {
     const self = this;
     console.log('hello world from onloggedin');
@@ -527,7 +556,7 @@ export class ChatComponent implements OnInit {
     for (let i = 0; i < roomList.length; ++i) {
       let row;
       if (roomList != null) {
-         row = '<tr>' +
+        row = '<tr>' +
           '<td>' + roomList[i].room_id + '</td>' +
           '<td>' + roomList[i].membership + '</td>' +
           '<td>' + roomList[i].latest_message + '</td>' +
@@ -635,9 +664,8 @@ export class ChatComponent implements OnInit {
     //         "                                        </li>";
     //     $("#messages").append(row);
     // @ts-ignore
-    if (data.user_id !== self.accountInfo.user_id && data.content.msgtype !== 'm.image' && data.sender !== '@drbot:yashfiichat.eastus.cloudapp.azure.com') {
+    if (data.user_id !== '@user1:yashfiichat.eastus.cloudapp.azure.com' && data.content.msgtype !== 'm.image' && data.sender !== '@drbot:yashfiichat.eastus.cloudapp.azure.com') {
       const row = ' <li>\n' +
-        '                        <div class="chat__time">1 Minute ago</div>\n' +
         '                        <div class="chat__bubble chat__bubble--you">'
         + msg +
         '                                            </div>\n' +
@@ -660,48 +688,62 @@ export class ChatComponent implements OnInit {
       console.log(row, 'the row');
       $('#messages').append(row);
 
-    }else if(data.sender == '@drbot:yashfiichat.eastus.cloudapp.azure.com')  {
-      let h = msg;
-    let theLink = h.substring(
+    } else if (data.sender == '@drbot:yashfiichat.eastus.cloudapp.azure.com' && data.content.msgtype === 'm.notice') {
+      const h = msg;
+      const theLink = h.substring(
         h.lastIndexOf('http')
       );
 
       const row = ' <li>\n' +
-        '                        <div class="chat__bubble chat__bubble--me" style="margin: 0 auto;\n' +
+        '                        <div (click)="openModal(template)" class="chat__bubble chat__bubble--me" style="margin: 0 auto;\n' +
         '    background: red;\n' +
         '    color: white;\n' +
         '    font-style: italic;\n' +
         '    font-size: 17px;text-align:center;">'
-        + msg + '</br>'+
+        + msg + '</br>' +
 
-        '<a target="_blank" href="' + theLink + '"/>LINK</a>' +
-       ' </div>\n' +
+        '<a id="a" target="_blank" value="' + theLink + '"/>LINK</a>' +
+        ' </div>\n' +
         '                                        </li>';
-      $('#messages').
-      append(row);
-    }else  {
+      $('#messages').append(row);
+    } else if (data.sender == '@drbot:yashfiichat.eastus.cloudapp.azure.com' && data.content.msgtype !== 'm.notice') {
+      const h = msg;
+      const theLink = h.substring(
+        h.lastIndexOf('http')
+      );
+
+      const row = ' <li>\n' +
+        '                        <div (click)="openModal(template)" class="chat__bubble chat__bubble--me" style="margin: 0 auto;\n' +
+        '    background: deepskyblue;\n' +
+        '    color: white;\n' +
+        '    font-style: italic;\n' +
+        '    font-size: 17px;text-align:center;">'
+        + msg + '</br>' +
+
+        '<a id="medical" target="_blank" value="' + theLink + '"/>Show</a>' +
+        ' </div>\n' +
+        '                                        </li>';
+      $('#messages').append(row);
+    } else {
       const row = ' <li>\n' +
         '                        <div class="chat__time">1 Minute ago</div>\n' +
         '                        <div class="chat__bubble chat__bubble--me">'
         + msg +
         '                                            </div>\n' +
         '                                        </li>';
-      $('#messages').
-    append(row);
+      $('#messages').append(row);
+    }
   }
 
+    // /AlqPFHkTiUfTCrIzWwTsAPdT?width=200&height=200&method=scale
+
+
+    addMember(data: any) {
+      const row = '<tr>' +
+        '<td>' + data.state_key + '</td>' +
+        '<td>' + data.content.membership + '</td>' +
+        '</tr>';
+      $('#members').append(row);
+    }
+
   }
-
-
-  // /AlqPFHkTiUfTCrIzWwTsAPdT?width=200&height=200&method=scale
-
-
-  addMember(data: any) {
-    const row = '<tr>' +
-      '<td>' + data.state_key + '</td>' +
-      '<td>' + data.content.membership + '</td>' +
-      '</tr>';
-    $('#members').append(row);
-  }
-
-}

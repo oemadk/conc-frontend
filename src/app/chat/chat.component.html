@@ -50,8 +50,8 @@
         <div style="padding:10px;" class="alert alert-warning" role="alert">
           Doctor has requested an urgent lab test
         </div>
-        <div style="padding:10px;" class="alert alert-dark" role="alert">
-          Lab results are out!
+        <div (click)="openModal(vitals)" style="padding:10px;" class="alert alert-dark" role="alert">
+          Show Vitals
         </div>
       </div>
       </div>
@@ -91,3 +91,101 @@
   </div>
 </div>
 <button *ngIf="chattingbutton" class="button">Start CHATTING</button>
+<button id="openpopup" (click)="openModal(template)" ></button>
+<button id="openpopup2" (click)="openModal(vitals)" ></button>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <iframe *ngIf="urlMain"  width="100%" height="800px" [src]="urlMain"></iframe>
+  </div>
+</ng-template>
+
+<ng-template #vitals>
+  <div class="modal-body">
+
+    <div class="container" style="min-width: auto !important;">
+
+<!--      <div class="summary-column">-->
+<!--        <div class="statistics">-->
+<!--          <h2>summary</h2>-->
+<!--          <div class="age"><span class="title title-age">22</span></div>-->
+<!--          <div class="weight"><span class="title title-weight">53 kg</span></div>-->
+<!--          <div class="float-none"></div>-->
+<!--          <div class="height">-->
+<!--            <div class="icon"></div>-->
+<!--            <div class="data"><span>172 cm</span></div>-->
+<!--          </div>-->
+<!--          <div class="float-none"></div>-->
+<!--        </div>-->
+<!--      </div>-->
+      <div class="content-column">
+        <div class="header-container" id="headerContainer">
+          <div class="nav">
+            <div class="content">
+              <p>
+             <span class="shape score">Vital</span><span class="shape"> Signs</span>
+                <br>
+              <div class="heart-rate">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="150px" height="73px" viewBox="0 0 150 73" enable-background="new 0 0 150 73" xml:space="preserve">
+    <polyline fill="none" stroke="#009B9E" stroke-width="3" stroke-miterlimit="10" points="0,45.486 38.514,45.486 44.595,33.324 50.676,45.486 57.771,45.486 62.838,55.622 71.959,9 80.067,63.729 84.122,45.486 97.297,45.486 103.379,40.419 110.473,45.486 150,45.486"
+    />
+  </svg>
+                <div class="fade-in"></div>
+                <div class="fade-out"></div>
+              </div>
+            </div>
+          </div>
+          <div class="float-none"></div>
+        </div>
+        <div class="split-container">
+          <div class="split">
+            <h3>Temperature</h3>
+            <div class="temperature">36.7</div>
+            <div class="split-graph">
+              <canvas id="temperatureGraph"></canvas>
+            </div>
+          </div>
+          <div class="split">
+            <h3>Blood pressure</h3>
+            <div class="calories">140/60</div>
+          </div>
+        </div>
+        <div class="split-container">
+          <div class="split">
+            <h3>Heart rate</h3>
+            <div class="heart-rate">87</div>
+            <div class="split-graph">
+              <canvas id="heartRateGraph"></canvas>
+            </div>
+          </div>
+          <div class="split">
+            <h3>Breaths per Minute</h3>
+            <div class="heart-rate">15</div>
+          </div>
+        </div>
+        <div class="float-none"></div>
+      </div>
+<!--      <div class="search-column">-->
+<!--        <div class="activity-list">-->
+<!--          <h3>Recent Activity</h3>-->
+<!--          <div class="activity">-->
+<!--            <div class="image-container"><img src="https://placeimg.com/40/40/face"/></div>-->
+<!--            <div class="text"><span class="name">Nurse </span>added a new bloodpressure to (patient name).<span class="time-ago">2 hours ago</span></div>-->
+<!--          </div>-->
+<!--          <div class="activity">-->
+<!--            <div class="image-container"><img src="https://placeimg.com/40/40/person"/></div>-->
+<!--            <div class="text"><span class="name">Nurse  </span>added a new heart rate to (patient name).<span class="time-ago">2 hours ago</span></div>-->
+<!--          </div>-->
+
+
+<!--        </div>-->
+<!--      </div>-->
+    </div>
+  </div>
+</ng-template>
