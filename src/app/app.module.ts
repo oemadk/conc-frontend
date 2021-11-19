@@ -33,6 +33,11 @@ import { PatientlistingComponent } from './patientlisting/patientlisting.compone
 import * as $ from 'jquery';
 import { PopupComponent } from './popup/popup.component';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { YashfitemplateComponent } from './yashfitemplate/yashfitemplate.component';
+import { LocalstorageComponent } from './localstorage/localstorage.component';
+import { YashfitabsComponent } from './yashfitabs/yashfitabs.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +60,10 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
     MessaginghomeComponent,
     ChatComponent,
     PatientlistingComponent,
-    PopupComponent
+    PopupComponent,
+    YashfitemplateComponent,
+    LocalstorageComponent,
+    YashfitabsComponent
   ],
   imports: [
     RouterModule,
@@ -67,7 +75,8 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
     FormsModule,
     HttpClientModule,
     ModalModule.forRoot(),
-    AccordionModule.forRoot()
+    AccordionModule.forRoot(),
+    NgbModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

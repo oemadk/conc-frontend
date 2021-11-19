@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'concAngular';
   private roles: string[] = [];
   isLoggedIn = false;
-  showAdminBoard = false;
+  showAdminBoard = false;id="ifr"
   showModeratorBoard = false;
   username?: string;
   nav = localStorage.getItem('nav');

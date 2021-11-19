@@ -17,6 +17,10 @@ import { RfafilledComponent } from './rfafilled/rfafilled.component';
 import { IcubedsComponent } from './icubeds/icubeds.component';
 import { FooterComponent } from './footer/footer.component';
 import { ChatComponent } from './chat/chat.component';
+import { YashfitemplateComponent } from './yashfitemplate/yashfitemplate.component';
+import { LocalstorageComponent } from './localstorage/localstorage.component';
+import { YashfitabsComponent } from './yashfitabs/yashfitabs.component';
+
 const routes: Routes = [
   { path: 'welcome', component: WelcomepageComponent },
   { path: 'home', component: HomeComponent },
@@ -29,8 +33,12 @@ const routes: Routes = [
   { path: 'rfa', component: RfaComponent },
   { path: 'icubeds', component: IcubedsComponent },
   { path: 'chat/:id', component: ChatComponent },
+  { path: 'localstorage', component: LocalstorageComponent },
+  { path: 'tabs', component: YashfitabsComponent },
+
   { path: 'icuhome1', component: IcuhomeComponent },
   { path: 'icudirectrequest', component: IcudirectrequestComponent },
+  { path: 'yashfi/template', component: YashfitemplateComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'full' }
  ];
 

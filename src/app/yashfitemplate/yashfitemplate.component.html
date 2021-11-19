@@ -1,0 +1,24 @@
+<app-header></app-header>
+<iframe id="ifr" width="100%" height="400px" src="http://localhost:8081/_/plugin/add/patient/plugin"></iframe>
+<iframe width="100%" height="800px" src="http://localhost:8081/_/plugin/doctor/add/template/answer?clinicId=183&clinicName=Consultation"></iframe>
+
+<button style="margin: 0 auto" (click)="addRfa();openModal(template)">Sumbit RFA</button>
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div style="padding:20px;display:flex;">
+      <h4 style=" padding-top: 50%;
+    padding-bottom: 50%;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}"><a (click)="goto();modalRef?.hide()" style="text-decoration: none;color:black;"><b>Your Request Has Been <br> Submitted
+        Successfully</b></a></h4>
+    </div>
+  </div>
+</ng-template>
