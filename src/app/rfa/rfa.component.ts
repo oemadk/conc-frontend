@@ -110,17 +110,17 @@ export class RfaComponent implements OnInit {
     const name = $event.name;
     console.log(name);
     if (categori === 'clinical'){
-      this.form.clinical = 'https://concolio.eastus.cloudapp.azure.com/files/' + name;
+      this.form.clinical = 'https://conc-backend.eastus.cloudapp.azure.com/files/' + name;
     }else if (categori === 'lab'){
-      this.form.lab = 'https://concolio.eastus.cloudapp.azure.com/files/' + name;
+      this.form.lab = 'https://conc-backend.eastus.cloudapp.azure.com/files/' + name;
     }else if (categori === 'xray'){
-      this.form.xray = 'https://concolio.eastus.cloudapp.azure.com/files/' + name;
+      this.form.xray = 'https://conc-backend.eastus.cloudapp.azure.com/files/' + name;
     }else if (categori === 'catscan'){
-      this.form.cat = 'https://concolio.eastus.cloudapp.azure.com/files/' + name;
+      this.form.cat = 'https://conc-backend.eastus.cloudapp.azure.com/files/' + name;
     }else if (categori === 'mri'){
-      this.form.mri = 'https://concolio.eastus.cloudapp.azure.com/files/' + name;
+      this.form.mri = 'https://conc-backend.eastus.cloudapp.azure.com/files/' + name;
     }else if (categori === 'ultrasound'){
-      this.form.ultrasound = 'https://concolio.eastus.cloudapp.azure.com/files/' + name;
+      this.form.ultrasound = 'https://conc-backend.eastus.cloudapp.azure.com/files/' + name;
     }
   }
   makeId(length: number) {
@@ -277,7 +277,7 @@ export class RfaComponent implements OnInit {
             this.progress = Math.round(100 * event.loaded / event.total);
           } else if (event instanceof HttpResponse) {
             this.message = event.body.message;
-            this.form.voice_notes =  'https://concolio.eastus.cloudapp.azure.com/files/' + this.message;
+            this.form.voice_notes =  'https://conc-backend.eastus.cloudapp.azure.com/files/' + this.message;
             console.log('thismessage ha', this.message);
             // this.fileInfos = this.uploadService.getFiles();
           }
@@ -314,7 +314,7 @@ export class RfaComponent implements OnInit {
     articleMain.appendChild(clipContainer);
     const blob = url;
     // const audioURL = window.URL.createObjectURL(blob);
-    audio.src = 'https://concolio.eastus.cloudapp.azure.com/files/' + blob;
+    audio.src = 'https://conc-backend.eastus.cloudapp.azure.com/files/' + blob;
     this.form.voice_notes = audio.src;
     console.log(audio.src, 'audio source thingy');
 
